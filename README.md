@@ -34,17 +34,21 @@ CoreDNS is running at https://k8sapi.example.com:6443/api/v1/namespaces/kube-sys
 $ sudo apt update && sudo apt install wget curl -y
 
 ### 1. Download MetalLB installation manifest
-Get the latest MetalLB release tag:
+1.1 Get the latest MetalLB release tag:
+
 $ MetalLB_RTAG=$(curl -s https://api.github.com/repos/metallb/metallb/releases/latest|grep tag_name|cut -d '"' -f 4|sed 's/v//')
 
-To check release tag use echo command:
+1.2 To check release tag use echo command:
+
 $ echo $MetalLB_RTAG
 
-Create directory where manifests will be downloaded to:
+1.3 Create directory where manifests will be downloaded to:
+
 $ mkdir ~/metallb
 $ cd ~/metallb
 
-Download MetalLB installation manifest:
+1.4 Download MetalLB installation manifest:
+
 $ wget https://raw.githubusercontent.com/metallb/metallb/v$MetalLB_RTAG/config/manifests/metallb-native.yaml
 
 Below are the components in the manifest file:
@@ -53,19 +57,20 @@ Below are the components in the manifest file:
         ◦ Service accounts for both controller and speaker, along with RBAC permissions that the needed by the components to function.
 
 ### 2. Install MetalLB Load Balancer on Kubernetes cluster
-Install MetalLB in your Kubernetes cluster by apply the manifest:
+2.1 Install MetalLB in your Kubernetes cluster by apply the manifest:
+
 $ kubectl apply -f metallb-native.yaml
 
-The command we executed deploys MetalLB to your Kubernetes cluster, under the metallb-system namespace.
+2.2 The command we executed deploys MetalLB to your Kubernetes cluster, under the metallb-system namespace.
 
 $ watch kubectl get all -n metallb-system
 $ kubectl get pods -n metallb-system --watch
 
-Waif for everything to be in running state, then you can list running Pods:
+2.3 Waif for everything to be in running state, then you can list running Pods:
 
 $ kubectl get pods  -n metallb-system
 
-To list all services instead, use the commands:
+2.4 To list all services instead, use the commands:
 
 $ kubectl get all  -n metallb-system
 
@@ -83,7 +88,7 @@ A complete configuration with both IP Address Pool and L2 advertisement is shown
 
 ![Screenshot from 2024-08-10 21-30-47](https://github.com/user-attachments/assets/1717fb6f-6fee-4eff-b968-5f0dfe428f7b)
 
-Apply the configuration using kubectl command:
+Apply the configuration(ipaddress_pools.yaml) using kubectl command:
 
 $ kubectl apply -f  ~/metallb/ipaddress_pools.yaml
 
@@ -92,6 +97,7 @@ List created IP Address Pools and Advertisements:
 ![Screenshot from 2024-08-10 21-32-58](https://github.com/user-attachments/assets/ff64786a-9194-42ad-894e-6f5ea41a93d4)
 
 Get more details using describe kubectl command option:
+
 $ kubectl describe ipaddresspools.metallb.io production -n metallb-system
 
 ### 4. Deploying services that use MetalLB LoadBalancer()
