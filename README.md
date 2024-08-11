@@ -180,21 +180,29 @@ Now that your cluster has an IP address/domain name, you can easily access the T
 Now proceed and access the Traefik Dashboard using the http://lb_ip:9000/dashboard/
 
 ### After installing Traefik Ingress Controller on a Kubernetes cluster, the following set of objects are usually created:
-### 1.Namespace: 
+**a) Namespace:**
 A new namespace, usually called traefik, is created to separate resources related to Traefik Ingress Controller.
-### 2.Service Account:
+
+**b) Service Account:**
 A service account is created for Traefik.
-### 3.Role and RoleBinding: 
+
+**c) Role and RoleBinding:** 
 A Role is created to determine the necessary access for Traefik Ingress Controller. A RoleBinding is created to bind the Role to the Service Account.
-### 4.ClusterRole and ClusterRoleBinding: 
+
+**d) ClusterRole and ClusterRoleBinding:**
 A ClusterRole is created to define cluster-level permissions for Traefik. A ClusterRoleBinding is created to bind the ClusterRole to the Service Account.
-### 5.ConfigMap: 
+
+**e) ConfigMap:**
 A ConfigMap is created to configure Traefik.
-### 6.Deployment: 
+
+**f) Deployment:**
 A Deployment is created to manage Traefik Ingress Controller pods.
-### 7.Service: 
+
+**g) Service:**
 A Service is created to access the Traefik Ingress Controller. This service is usually configured as LoadBalancer or NodePort.
-### 8.Pod: 
+
+**h) Pod:**
 Deployment-related pods are created that contain Traefik Ingress Controller containers.
-### 9.Custom Resource Definitions (CRDs): 
+
+**i) Custom Resource Definitions (CRDs):**
 A number of CRDs may be installed for more advanced features such as **IngressRoute**.
