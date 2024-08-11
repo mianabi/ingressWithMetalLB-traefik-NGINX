@@ -1,0 +1,14 @@
+spec:
+  ports:
+  - name: web
+    port: 80
+    protocol: TCP
+    targetPort: web
+  - name: websecure
+    port: 443
+    protocol: TCP
+    targetPort: websecure
+  - name: traefik
+    port: 9000
+    protocol: TCP
+    targetPort: traefik

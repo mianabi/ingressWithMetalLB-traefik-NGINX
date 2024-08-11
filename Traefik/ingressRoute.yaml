@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mysite-nginx-ingressroute
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`dev.sana1.com`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: mysite-nginx-service
+          port: 80

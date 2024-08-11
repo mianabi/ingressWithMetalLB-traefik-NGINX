@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mysite-nginx-ingress
+spec:
+  ingressClassName: mytraefik
+  rules:
+  - host: dev.sana1.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: mysite-nginx-service
+            port:
+              number: 80
