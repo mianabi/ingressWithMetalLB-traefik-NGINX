@@ -21,4 +21,6 @@ $ kubectl get svc -n dev
 
 $ kubectl apply -f ingress.yaml -n dev
 
+$ kubectl get ing -n dev
+
 Now access the deployment using the URL http://domain_name
