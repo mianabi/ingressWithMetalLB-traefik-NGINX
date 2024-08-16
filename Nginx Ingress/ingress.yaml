@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  labels:
+    name: my-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: dev.sana.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: nginx-dev
+            port:
+              number: 8000
