@@ -4,7 +4,7 @@ this Files deploye 3 pod for Serve Wen Site on Nginx and route Traefik by Nginx 
 1- Create namespace "dev" and run Deployement Workload for up pod by apply deployement.yaml on it:
 ```yml
 $ kubectl create ns dev
-$ kubectl apply -f mysite.yaml -n dev
+$ kubectl apply -f deployment.yaml -n dev
 $ kubectl get pod -n dev
 ```
 
