@@ -3,9 +3,11 @@
 ### Confirm if your Kubernetes Cluster API is responsive and you’re able to use kubectl cluster administration command-line tool:
 ```yml
 $ kubectl cluster-info
-```
+
 Kubernetes control plane is running at https://k8sapi.example.com:6443
 CoreDNS is running at https://k8sapi.example.com:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+```
+
 
 ### install curl and wget utilities if not available already in your workstation:
 ### Debian / Ubuntu ###
