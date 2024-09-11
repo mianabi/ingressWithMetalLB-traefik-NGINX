@@ -9,7 +9,20 @@ To define an IP pool, you must create a ConfigMap for MetalLB that contains the 
 ### Sample ConfigMap file for MetalLB
 Here is an example of a ConfigMap that defines an IP pool for MetalLB:
 
-![Screenshot from 2024-08-10 19-32-13](https://github.com/user-attachments/assets/1881c1f7-1721-49d5-b32f-9c8d75c63fc7)
+```yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: metallb-system
+  name: config
+data:
+  config: |
+    address-pools:
+    - name: default
+      protocol: layer2
+      addresses:
+      - 192.168.1.240-192.168.1.250
+```
 
 In this example:
 
